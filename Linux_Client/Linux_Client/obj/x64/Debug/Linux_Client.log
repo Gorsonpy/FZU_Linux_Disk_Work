@@ -5,47 +5,50 @@
   正在启动远程生成
   正在编译源:
   main.cpp
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(56,23): warning : conversion from ‘ssize_t’ {aka ‘long int’} to ‘int’ may change value [-Wconversion]
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(56,23): warning :    56 |     while ((res = read(fd, up_file_msg.buffer, sizeof(up_file_msg.buffer))) > 0) {
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(56,23): warning :       |                   ~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(59,20): warning : conversion from ‘ssize_t’ {aka ‘long int’} to ‘int’ may change value [-Wconversion]
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(59,20): warning :    59 |         res = write(client_socket, &up_file_msg, sizeof(MSG));
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(59,20): warning :       |               ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(71,19): warning : conversion from ‘ssize_t’ {aka ‘long int’} to ‘int’ may change value [-Wconversion]
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(71,19): warning :    71 |         res = read(client_socket, &recv_msg, sizeof(MSG));
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(71,19): warning :       |               ~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(92,24): warning : conversion from ‘ssize_t’ {aka ‘long int’} to ‘int’ may change value [-Wconversion]
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(92,24): warning :    92 |             res = write(fd, recv_msg.buffer, recv_msg.bytes);
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(92,24): warning :       |                   ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(96,32): warning : comparison of integer expressions of different signedness: ‘int’ and ‘long unsigned int’ [-Wsign-compare]
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(96,32): warning :    96 |             if (recv_msg.bytes < sizeof(recv_msg.buffer)) {
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(96,32): warning :       |                 ~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(69,10): warning : unused variable ‘buffer’ [-Wunused-variable]
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(69,10): warning :    69 |     char buffer[50] = { 0 };
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(69,10): warning :       |          ^~~~~~
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(138,20): warning : conversion from ‘int’ to ‘char’ may change value [-Wconversion]
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(138,20): warning :   138 |         c = getchar();
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(138,20): warning :       |             ~~~~~~~^~
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(144,28): warning : conversion from ‘ssize_t’ {aka ‘long int’} to ‘int’ may change value [-Wconversion]
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(144,28): warning :   144 |                 res = write(client_socket, &send_msg, sizeof(MSG));
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(144,28): warning :       |                       ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(152,28): warning : conversion from ‘ssize_t’ {aka ‘long int’} to ‘int’ may change value [-Wconversion]
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(152,28): warning :   152 |                 res = write(client_socket, &send_msg, sizeof(MSG));
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(152,28): warning :       |                       ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(162,28): warning : conversion from ‘ssize_t’ {aka ‘long int’} to ‘int’ may change value [-Wconversion]
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(162,28): warning :   162 |                 res = write(client_socket, &send_msg, sizeof(MSG));
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(162,28): warning :       |                       ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(167,27): warning : conversion from ‘double’ to ‘unsigned int’ changes value from ‘1.0000000000000001e-1’ to ‘0’ [-Wfloat-conversion]
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(167,27): warning :   167 |                     sleep(0.1);
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(167,27): warning :       |                           ^~~
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(174,28): warning : conversion from ‘ssize_t’ {aka ‘long int’} to ‘int’ may change value [-Wconversion]
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(174,28): warning :   174 |                 res = write(client_socket, &send_msg, sizeof(MSG));
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(174,28): warning :       |                       ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(119,10): warning : unused variable ‘buffer’ [-Wunused-variable]
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(119,10): warning :   119 |     char buffer[50] = { 0 };
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(119,10): warning :       |          ^~~~~~
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(65,1): warning : control reaches end of non-void function [-Wreturn-type]
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(65,1): warning :    65 | }
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(65,1): warning :       | ^
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(46,21): warning : conversion from ‘size_t’ {aka ‘long unsigned int’} to ‘int’ may change value [-Wconversion]
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(46,21): warning :    46 |     int len = strlen(s);
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(46,21): warning :       |               ~~~~~~^~~
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(72,23): warning : conversion from ‘ssize_t’ {aka ‘long int’} to ‘int’ may change value [-Wconversion]
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(72,23): warning :    72 |     while ((res = read(fd, up_file_msg.buffer, sizeof(up_file_msg.buffer))) > 0) {
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(72,23): warning :       |                   ~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(75,20): warning : conversion from ‘ssize_t’ {aka ‘long int’} to ‘int’ may change value [-Wconversion]
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(75,20): warning :    75 |         res = write(client_socket, &up_file_msg, sizeof(MSG));
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(75,20): warning :       |               ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(87,19): warning : conversion from ‘ssize_t’ {aka ‘long int’} to ‘int’ may change value [-Wconversion]
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(87,19): warning :    87 |         res = read(client_socket, &recv_msg, sizeof(MSG));
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(87,19): warning :       |               ~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(108,24): warning : conversion from ‘ssize_t’ {aka ‘long int’} to ‘int’ may change value [-Wconversion]
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(108,24): warning :   108 |             res = write(fd, recv_msg.buffer, recv_msg.bytes);
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(108,24): warning :       |                   ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(112,32): warning : comparison of integer expressions of different signedness: ‘int’ and ‘long unsigned int’ [-Wsign-compare]
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(112,32): warning :   112 |             if (recv_msg.bytes < sizeof(recv_msg.buffer)) {
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(112,32): warning :       |                 ~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(85,10): warning : unused variable ‘buffer’ [-Wunused-variable]
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(85,10): warning :    85 |     char buffer[50] = { 0 };
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(85,10): warning :       |          ^~~~~~
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(157,20): warning : conversion from ‘int’ to ‘char’ may change value [-Wconversion]
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(157,20): warning :   157 |         c = getchar();
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(157,20): warning :       |             ~~~~~~~^~
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(163,28): warning : conversion from ‘ssize_t’ {aka ‘long int’} to ‘int’ may change value [-Wconversion]
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(163,28): warning :   163 |                 res = write(client_socket, &send_msg, sizeof(MSG));
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(163,28): warning :       |                       ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(171,28): warning : conversion from ‘ssize_t’ {aka ‘long int’} to ‘int’ may change value [-Wconversion]
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(171,28): warning :   171 |                 res = write(client_socket, &send_msg, sizeof(MSG));
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(171,28): warning :       |                       ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(181,28): warning : conversion from ‘ssize_t’ {aka ‘long int’} to ‘int’ may change value [-Wconversion]
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(181,28): warning :   181 |                 res = write(client_socket, &send_msg, sizeof(MSG));
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(181,28): warning :       |                       ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(186,27): warning : conversion from ‘double’ to ‘unsigned int’ changes value from ‘1.0000000000000001e-1’ to ‘0’ [-Wfloat-conversion]
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(186,27): warning :   186 |                     sleep(0.1);
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(186,27): warning :       |                           ^~~
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(193,28): warning : conversion from ‘ssize_t’ {aka ‘long int’} to ‘int’ may change value [-Wconversion]
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(193,28): warning :   193 |                 res = write(client_socket, &send_msg, sizeof(MSG));
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(193,28): warning :       |                       ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(138,10): warning : unused variable ‘buffer’ [-Wunused-variable]
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(138,10): warning :   138 |     char buffer[50] = { 0 };
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(138,10): warning :       |          ^~~~~~
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(81,1): warning : control reaches end of non-void function [-Wreturn-type]
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(81,1): warning :    81 | }
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\main.cpp(81,1): warning :       | ^
   正在链接对象
   Linux_Client.vcxproj -> D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_Client\Linux_Client\bin\x64\Debug\Linux_Client.out

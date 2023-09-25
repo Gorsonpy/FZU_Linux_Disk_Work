@@ -42,6 +42,22 @@ char up_file_name[100] = { 0 };
 MSG recv_msg = { 0 };
 int fd = -1; //用来打开文件进行读写的文件描述,默认情况下为0表示还没打开
 
+int check_suffix(char s[]) {
+    int len = strlen(s);
+    char suffix[50] = { 0 };
+    int cnt = 0;
+    char right_suffix[8][50] = { "txt", "jpg", "exe", "gif", "png", "jpeg", "md", "markdown"};
+    for (int i = len - 1; i >= 0; --i) {
+        if (s[i] == '.') {
+            for (int j = i + 1; j < len; ++j) suffix[cnt++] = s[j];
+            break;
+        }
+    }
+    for (int i = 0; i < 8; ++i) {
+        if (!strcmp(suffix, right_suffix[i])) return 1;
+    }
+    return 0;
+}
 void* upload_file_thread(void* args) {
     MSG up_file_msg = { 0 };
     int client_socket = *((int*)args);
@@ -100,7 +116,10 @@ void* thread_func(void* arg) {
             }
         }
         else if (recv_msg.type == MSG_TYPE_UPLOAD_SHOW) {
-            if(!recv_msg.flag) printf("%s\n", recv_msg.fname);
+            if (!recv_msg.flag) {
+                if(check_suffix(recv_msg.fname))
+                    printf("%s\n", recv_msg.fname);
+            }
             memset(recv_msg.fname, 0, sizeof(recv_msg.fname));
         }
     }
