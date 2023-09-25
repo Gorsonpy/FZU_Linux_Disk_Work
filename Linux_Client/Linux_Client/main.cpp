@@ -63,14 +63,18 @@ void* upload_file_thread(void* args) {
     int client_socket = *((int*)args);
     int fd = -1;
     int res = 0;
-    fd = open("./download/b.txt", O_RDONLY);
+
+    // 拼接实际上传的文件地址
+    char dir[150] = { "./download/" };
+    strcat(dir, up_file_name);
+
+    fd = open(dir, O_RDONLY);
     if (fd < 0) {
         perror("open up file error:");
         return NULL;
     }
     up_file_msg.type = MSG_TYPE_UPLOAD_DATA;
     while ((res = read(fd, up_file_msg.buffer, sizeof(up_file_msg.buffer))) > 0) {
-        printf("res : %d\n", res);
         up_file_msg.bytes = res;
         res = write(client_socket, &up_file_msg, sizeof(MSG));
         if (res <= 0) {
@@ -182,10 +186,12 @@ int main()
                 memset(send_msg.show_fname, 0, sizeof send_msg.show_fname);
 
                 while (!recv_msg.flag) {
-                    // 还没收集完文件名                
+                    // 还没收集完文件名 sleep 以保证能显示完整文件名后再来让用户选择               
                     sleep(0.1);
                 }
-
+                
+                recv_msg.flag = false;
+                // 告诉服务器要上传，先创建对应的文件
                 send_msg.type = MSG_TYPE_UPLOAD;
                 printf("input up load filename:");
                 scanf("%s", up_file_name);
@@ -196,9 +202,10 @@ int main()
                     continue;
                 }
                 memset(&send_msg, 0, sizeof(MSG));
+
+
                 // 上传文件需要比较长的时间 需要一个新的线程来专门处理文件上传任务
-                pthread_create(&pthread_send_id, NULL, upload_file_thread, 
-                    &client_socket);
+                pthread_create(&pthread_send_id, NULL, upload_file_thread, &client_socket);
                 break;
             case '4':
                 net_disk_ui();

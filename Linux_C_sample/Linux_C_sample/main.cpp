@@ -28,6 +28,7 @@ typedef struct msg {
 #define MSG_TYPE_UPLOAD_SHOW 5
 
 MSG recv_msg = { 0 };
+char rootdir[30] = { "/home/gorsonpy/" };
 
 // 服务端查看服务器这边目录下的文件名信息
 // 默认情况下服务器的目录我们设置为用户的家目录/home
@@ -46,13 +47,13 @@ void search_server_dir(int accept_socket) {
         dir = readdir(dp);
         // 返回是空表示文件夹全部读取完成
         if (NULL == dir) {
-            printf("read over !\n");
             info_msg.flag = true;
             res = write(accept_socket, &info_msg, sizeof(MSG));
             if (res < 0) {
                 perror("flag send error:");
                 return;
             }
+            info_msg.flag = false;
             break;
         }
         if (dir->d_name[0] != '.') {
@@ -93,7 +94,6 @@ void* thread_fun(void* arg) {
     int acpt_socket = *((int*)arg);
     int res;
     char buffer[50] = { 0 };
-    char up_file_name[20] = { 0 };
     int fd = -1;
 
     while (1) {
@@ -117,8 +117,12 @@ void* thread_fun(void* arg) {
             memset(&recv_msg, 0, sizeof(MSG));
         }
         else if (recv_msg.type == MSG_TYPE_UPLOAD) {
-            strcpy(up_file_name, recv_msg.fname);;
-            fd = open("/home/gorsonpy/b.txt", O_CREAT | O_WRONLY, 0666);
+            // 根据用户选择的文件名创建或者打开
+            char dir[150] = { 0 };
+            strcpy(dir, rootdir);
+            strcat(dir, recv_msg.fname);
+
+            fd = open(dir, O_CREAT | O_WRONLY, 0666);
             if (fd < 0) {
                 perror("create up file error:");
             }

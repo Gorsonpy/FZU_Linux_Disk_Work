@@ -1,5 +1,5 @@
 ﻿  正在验证源
-  正在将源远程复制到“192.168.43.95”
+  正在将源远程复制到“192.168.31.128”
   正在验证体系结构
   正在验证体系结构
   正在启动远程生成
@@ -8,29 +8,29 @@
 D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_C_sample\Linux_C_sample\main.cpp(51,24): warning : conversion from ‘ssize_t’ {aka ‘long int’} to ‘int’ may change value [-Wconversion]
 D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_C_sample\Linux_C_sample\main.cpp(51,24): warning :    51 |             res = write(accept_socket, &info_msg, sizeof(MSG));
 D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_C_sample\Linux_C_sample\main.cpp(51,24): warning :       |                   ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_C_sample\Linux_C_sample\main.cpp(64,24): warning : conversion from ‘ssize_t’ {aka ‘long int’} to ‘int’ may change value [-Wconversion]
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_C_sample\Linux_C_sample\main.cpp(64,24): warning :    64 |             res = write(accept_socket, &info_msg, sizeof(MSG));
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_C_sample\Linux_C_sample\main.cpp(64,24): warning :       |                   ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_C_sample\Linux_C_sample\main.cpp(83,23): warning : conversion from ‘ssize_t’ {aka ‘long int’} to ‘int’ may change value [-Wconversion]
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_C_sample\Linux_C_sample\main.cpp(83,23): warning :    83 |     while ((res = read(fd, file_msg.buffer, sizeof(file_msg.buffer))) > 0) {
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_C_sample\Linux_C_sample\main.cpp(83,23): warning :       |                   ~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_C_sample\Linux_C_sample\main.cpp(85,20): warning : conversion from ‘ssize_t’ {aka ‘long int’} to ‘int’ may change value [-Wconversion]
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_C_sample\Linux_C_sample\main.cpp(85,20): warning :    85 |         res = write(accept_socket, &file_msg, sizeof(MSG));
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_C_sample\Linux_C_sample\main.cpp(85,20): warning :       |               ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_C_sample\Linux_C_sample\main.cpp(65,24): warning : conversion from ‘ssize_t’ {aka ‘long int’} to ‘int’ may change value [-Wconversion]
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_C_sample\Linux_C_sample\main.cpp(65,24): warning :    65 |             res = write(accept_socket, &info_msg, sizeof(MSG));
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_C_sample\Linux_C_sample\main.cpp(65,24): warning :       |                   ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_C_sample\Linux_C_sample\main.cpp(84,23): warning : conversion from ‘ssize_t’ {aka ‘long int’} to ‘int’ may change value [-Wconversion]
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_C_sample\Linux_C_sample\main.cpp(84,23): warning :    84 |     while ((res = read(fd, file_msg.buffer, sizeof(file_msg.buffer))) > 0) {
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_C_sample\Linux_C_sample\main.cpp(84,23): warning :       |                   ~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_C_sample\Linux_C_sample\main.cpp(86,20): warning : conversion from ‘ssize_t’ {aka ‘long int’} to ‘int’ may change value [-Wconversion]
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_C_sample\Linux_C_sample\main.cpp(86,20): warning :    86 |         res = write(accept_socket, &file_msg, sizeof(MSG));
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_C_sample\Linux_C_sample\main.cpp(86,20): warning :       |               ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_C_sample\Linux_C_sample\main.cpp(102,19): warning : conversion from ‘ssize_t’ {aka ‘long int’} to ‘int’ may change value [-Wconversion]
 D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_C_sample\Linux_C_sample\main.cpp(102,19): warning :   102 |         res = read(acpt_socket, &recv_msg, sizeof(MSG));
 D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_C_sample\Linux_C_sample\main.cpp(102,19): warning :       |               ~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_C_sample\Linux_C_sample\main.cpp(127,24): warning : conversion from ‘ssize_t’ {aka ‘long int’} to ‘int’ may change value [-Wconversion]
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_C_sample\Linux_C_sample\main.cpp(127,24): warning :   127 |             res = write(fd, recv_msg.buffer, recv_msg.bytes);
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_C_sample\Linux_C_sample\main.cpp(127,24): warning :       |                   ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_C_sample\Linux_C_sample\main.cpp(128,32): warning : comparison of integer expressions of different signedness: ‘int’ and ‘long unsigned int’ [-Wsign-compare]
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_C_sample\Linux_C_sample\main.cpp(128,32): warning :   128 |             if (recv_msg.bytes < sizeof recv_msg.buffer) {
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_C_sample\Linux_C_sample\main.cpp(128,32): warning :       |                 ~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_C_sample\Linux_C_sample\main.cpp(140,1): warning : no return statement in function returning non-void [-Wreturn-type]
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_C_sample\Linux_C_sample\main.cpp(140,1): warning :   140 | }
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_C_sample\Linux_C_sample\main.cpp(140,1): warning :       | ^
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_C_sample\Linux_C_sample\main.cpp(145,10): warning : unused variable ‘buffer’ [-Wunused-variable]
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_C_sample\Linux_C_sample\main.cpp(145,10): warning :   145 |     char buffer[50] = { 0 };
-D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_C_sample\Linux_C_sample\main.cpp(145,10): warning :       |          ^~~~~~
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_C_sample\Linux_C_sample\main.cpp(131,24): warning : conversion from ‘ssize_t’ {aka ‘long int’} to ‘int’ may change value [-Wconversion]
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_C_sample\Linux_C_sample\main.cpp(131,24): warning :   131 |             res = write(fd, recv_msg.buffer, recv_msg.bytes);
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_C_sample\Linux_C_sample\main.cpp(131,24): warning :       |                   ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_C_sample\Linux_C_sample\main.cpp(132,32): warning : comparison of integer expressions of different signedness: ‘int’ and ‘long unsigned int’ [-Wsign-compare]
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_C_sample\Linux_C_sample\main.cpp(132,32): warning :   132 |             if (recv_msg.bytes < sizeof recv_msg.buffer) {
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_C_sample\Linux_C_sample\main.cpp(132,32): warning :       |                 ~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_C_sample\Linux_C_sample\main.cpp(144,1): warning : no return statement in function returning non-void [-Wreturn-type]
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_C_sample\Linux_C_sample\main.cpp(144,1): warning :   144 | }
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_C_sample\Linux_C_sample\main.cpp(144,1): warning :       | ^
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_C_sample\Linux_C_sample\main.cpp(149,10): warning : unused variable ‘buffer’ [-Wunused-variable]
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_C_sample\Linux_C_sample\main.cpp(149,10): warning :   149 |     char buffer[50] = { 0 };
+D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_C_sample\Linux_C_sample\main.cpp(149,10): warning :       |          ^~~~~~
   正在链接对象
   Linux_C_sample.vcxproj -> D:\dev\code\dev_c\FZU_Linux_Disk_Work\Linux_C_sample\Linux_C_sample\bin\x64\Debug\Linux_C_sample.out
