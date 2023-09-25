@@ -29,6 +29,7 @@ typedef struct msg {
 
 MSG recv_msg = { 0 };
 char rootdir[30] = { "/home/gorsonpy/" };
+char download_from_client_dir[200] = {"/home/gorsonpy/projects/Linux_C_sample/bin/x64/Debug/download_from_client/"};
 char download_dir[100] = { "/home/gorsonpy/projects/Linux_C_sample/bin/x64/Debug/download/" };
 // 服务端查看服务器这边目录下的文件名信息
 // 默认情况下服务器的目录我们设置为用户的家目录/home
@@ -39,7 +40,7 @@ void search_server_dir(int accept_socket) {
     int res = 0;
 
     DIR* dp = NULL;
-    if (info_msg.type == MSG_TYPE_FILE_NAME) DIR* dp = opendir(rootdir);
+    if (info_msg.type == MSG_TYPE_FILE_NAME) dp = opendir(rootdir);
     else dp = opendir(download_dir);
     if (NULL == dp) {
         perror("open dir error:\n");
@@ -80,6 +81,7 @@ void server_file_download(int accept_socket) {
     strcpy(dir, download_dir);
     strcat(dir, recv_msg.fname);
 
+    printf("dir : %s\n", dir);
     fd = open(dir, O_RDONLY);
     if (fd < 0) {
         perror("file open error:");
@@ -121,7 +123,7 @@ void* thread_fun(void* arg) {
         else if (recv_msg.type == MSG_TYPE_UPLOAD) {
             // 根据用户选择的文件名创建或者打开
             char dir[150] = { 0 };
-            strcpy(dir, rootdir);
+            strcpy(dir, download_from_client_dir);
             strcat(dir, recv_msg.fname);
 
             fd = open(dir, O_CREAT | O_WRONLY, 0666);

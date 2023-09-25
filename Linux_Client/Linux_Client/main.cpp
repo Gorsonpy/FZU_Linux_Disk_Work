@@ -138,7 +138,7 @@ void* thread_func(void* arg) {
             // 目录创建没问题之后就要开始创建文件
             if (fd == -1) {
                 // 第一次打开
-                char dir[200];
+                char dir[200] = { 0 };
                 strcpy(dir, download_from_client_dir);
                 strcat(dir, recv_msg.fname);
                 fd = open(dir, O_CREAT | O_WRONLY, 0666);
@@ -192,8 +192,6 @@ int main()
         switch (c) {
             case '1': 
                 send_msg.type = MSG_TYPE_FILE_NAME;
-                memcpy(send_msg.show_fname, rootDir, sizeof rootDir);
-                printf("dir : %s\n", send_msg.show_fname);
                 res = write(client_socket, &send_msg, sizeof(MSG));
                 if (res < 0) {
                     perror("发送服务器失败\n");
@@ -240,9 +238,11 @@ int main()
                 pthread_create(&pthread_send_id, NULL, upload_file_thread, &client_socket);
                 break;
             case '4':
+                system("clear");
                 net_disk_ui();
                 break;
             case '0':
+                return 0;
                 break;
         }
         memset(&send_msg, 0, sizeof send_msg);
