@@ -1,0 +1,1 @@
+g++ -o "/home/gorsonpy/projects/Linux_C_sample/bin/x64/Debug/Linux_C_sample.out" -Wl,--no-undefined -Wl,-z,relro -Wl,-z,now -Wl,-z,noexecstack -pthread /home/gorsonpy/projects/Linux_C_sample/obj/x64/Debug/main.o
