@@ -7,8 +7,8 @@
 #include <errno.h>
 #include <sys/types.h>
 #include <fcntl.h>
-
 #include <pthread.h>
+#include <dirent.h>
 void net_disk_ui() {
     printf("=========================TCP网盘客户端====================================\n");
     printf("========================功能菜单====================================\n");
@@ -25,7 +25,7 @@ void net_disk_ui() {
 #define MSG_TYPE_DOWNLOAD 2
 #define MSG_TYPE_UPLOAD 3
 #define MSG_TYPE_UPLOAD_DATA 4
-#define MSG_TYPE_UPLOAD_SHOW 5
+#define MSG_TYPE_DOWNLOAD_SHOW 5
 
 typedef struct msg {
     int type; // 操作类型
@@ -38,9 +38,11 @@ typedef struct msg {
 
 char rootDir[100] = { "/home/gorsonpy/" };
 char rootUpload[100] = { "/home/gorsonpy/projects/Linux_Client/bin/x64/Debug/download" };
+char download_from_client_dir[150] = { "/home/gorsonpy/projects/Linux_Client/bin/x64/Debug/download_from_server/" };
 char up_file_name[100] = { 0 };
 MSG recv_msg = { 0 };
 int fd = -1; //用来打开文件进行读写的文件描述,默认情况下为0表示还没打开
+
 
 int check_suffix(char s[]) {
     int len = strlen(s);
@@ -57,6 +59,29 @@ int check_suffix(char s[]) {
         if (!strcmp(suffix, right_suffix[i])) return 1;
     }
     return 0;
+}
+
+void show_client_dir() {
+    printf("客户端download文件夹下有:\n");
+    struct dirent* dir = NULL;
+
+    DIR* dp = opendir(rootUpload);
+    if (NULL == dp) {
+        perror("open dir error:\n");
+        return;
+    }
+    while (1) {
+        dir = readdir(dp);
+        // 返回是空表示文件夹全部读取完成
+        if (NULL == dir) {
+            break;
+        }
+        if (dir->d_name[0] != '.') {
+            if (check_suffix(dir->d_name)) {
+                printf("%s\n", dir->d_name);
+            }
+        }
+    }
 }
 void* upload_file_thread(void* args) {
     MSG up_file_msg = { 0 };
@@ -82,6 +107,8 @@ void* upload_file_thread(void* args) {
         }
         memset(up_file_msg.buffer, 0, sizeof up_file_msg.buffer);
     }
+
+    printf("file upload finished!\n");
 }
 void* thread_func(void* arg) {
     int client_socket = *((int*)arg);
@@ -93,8 +120,15 @@ void* thread_func(void* arg) {
             printf("server path filename = %s\n", recv_msg.fname);
             memset(&recv_msg, 0, sizeof(MSG));
         }
+        else if (recv_msg.type == MSG_TYPE_DOWNLOAD_SHOW) {
+            if (!recv_msg.flag) {
+                if (check_suffix(recv_msg.fname))
+                    printf("%s\n", recv_msg.fname);
+            }
+            memset(recv_msg.fname, 0, sizeof(recv_msg.fname));
+        }
         else if (recv_msg.type == MSG_TYPE_DOWNLOAD) {
-            if (mkdir("download", S_IRWXU) < 0) {
+            if (mkdir("download_from_server", S_IRWXU) < 0) {
                 if (errno == EEXIST) {
                     
                 }else {
@@ -104,7 +138,10 @@ void* thread_func(void* arg) {
             // 目录创建没问题之后就要开始创建文件
             if (fd == -1) {
                 // 第一次打开
-                fd = open("./download/a.txt", O_CREAT | O_WRONLY, 0666);
+                char dir[200];
+                strcpy(dir, download_from_client_dir);
+                strcat(dir, recv_msg.fname);
+                fd = open(dir, O_CREAT | O_WRONLY, 0666);
                 if (fd < 0) {
                     perror("file open error:");
                 }
@@ -118,13 +155,6 @@ void* thread_func(void* arg) {
                 close(fd);
                 fd = -1;
             }
-        }
-        else if (recv_msg.type == MSG_TYPE_UPLOAD_SHOW) {
-            if (!recv_msg.flag) {
-                if(check_suffix(recv_msg.fname))
-                    printf("%s\n", recv_msg.fname);
-            }
-            memset(recv_msg.fname, 0, sizeof(recv_msg.fname));
         }
     }
 }
@@ -171,26 +201,28 @@ int main()
                 memset(&send_msg, 0, sizeof(MSG));
                 break;
             case '2':
+                printf("服务器download目录下文件有:\n");
+                send_msg.type = MSG_TYPE_DOWNLOAD_SHOW;
+                res = write(client_socket, &send_msg, sizeof(MSG));
+
+                while (!recv_msg.flag) {
+                    sleep(0.1);
+                }
+                recv_msg.flag = false;
+
+                printf("input up download filename:");
+                scanf("%s", send_msg.fname);
+
                 send_msg.type = MSG_TYPE_DOWNLOAD;
                 res = write(client_socket, &send_msg, sizeof(MSG));
                 if (res < 0) {
-                    perror("send msg error\n");
+                    perror("send up download packg error:");
+                    continue;
                 }
                 memset(&send_msg, 0, sizeof(MSG));
                 break;
             case '3':
-                printf("download目录下文件有：\n");
-                send_msg.type = MSG_TYPE_UPLOAD_SHOW;
-                strcpy(send_msg.show_fname, rootUpload);
-                res = write(client_socket, &send_msg, sizeof(MSG));
-                memset(send_msg.show_fname, 0, sizeof send_msg.show_fname);
-
-                while (!recv_msg.flag) {
-                    // 还没收集完文件名 sleep 以保证能显示完整文件名后再来让用户选择               
-                    sleep(0.1);
-                }
-                
-                recv_msg.flag = false;
+                show_client_dir();
                 // 告诉服务器要上传，先创建对应的文件
                 send_msg.type = MSG_TYPE_UPLOAD;
                 printf("input up load filename:");
